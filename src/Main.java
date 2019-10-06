@@ -16,8 +16,20 @@ public class Main {
     }
 
     private int GetSeqSubLength(int[] arrayToSearch) {
-
-        return 0;
+        int[] results = new int[arrayToSearch.length];
+        for (int i = 0; i < arrayToSearch.length; i++) {
+            results[i] = 1;
+            for (int j = 0; j < i - 1; j++) {
+                if (arrayToSearch[i] % arrayToSearch[j] == 0 && results[j] + 1 > results[j])
+                    results[j]++;
+            }
+        }
+        int max = 0;
+        for (int currLength :
+                results) {
+            if (currLength > max) max = currLength;
+        }
+        return max + 1;
     }
 
     private int[] readFromFile() throws IOException {
