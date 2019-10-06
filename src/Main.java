@@ -19,7 +19,7 @@ public class Main {
         int[] results = new int[arrayToSearch.length];
         for (int i = 0; i < arrayToSearch.length; i++) {
             results[i] = 1;
-            for (int j = 0; j < i - 1; j++) {
+            for (int j = 0; j < i; j++) {
                 if (arrayToSearch[i] % arrayToSearch[j] == 0 && results[j] + 1 > results[j])
                     results[j]++;
             }
@@ -29,7 +29,7 @@ public class Main {
                 results) {
             if (currLength > max) max = currLength;
         }
-        return max + 1;
+        return max;
     }
 
     private int[] readFromFile() throws IOException {
