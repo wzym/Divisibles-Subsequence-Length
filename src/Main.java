@@ -12,16 +12,18 @@ public class Main {
 
     private void run() throws IOException {
         int[] arrayToSearch = readFromFile();
-        System.out.println(GetSeqSubLength(arrayToSearch));
+        System.out.println(getSeqSubLength(arrayToSearch));
     }
 
-    private int GetSeqSubLength(int[] arrayToSearch) {
+    private int getSeqSubLength(int[] arrayToSearch) {
         int[] results = new int[arrayToSearch.length];
         for (int i = 0; i < arrayToSearch.length; i++) {
             results[i] = 1;
             for (int j = 0; j < i; j++) {
-                if (arrayToSearch[i] % arrayToSearch[j] == 0 && results[j] + 1 > results[j])
-                    results[j]++;
+                if (arrayToSearch[i] >= arrayToSearch[j]
+                        && arrayToSearch[i] % arrayToSearch[j] == 0
+                        && results[j] + 1 > results[i])
+                    results[i]++;
             }
         }
         int max = 0;
